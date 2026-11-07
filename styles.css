@@ -100,17 +100,17 @@ body.intro-is-playing {
   display: block;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px), (max-height: 500px) and (pointer: coarse) {
   .intro-splash-video {
-    top: 50%;
-    left: 0;
-    inset: auto 0;
+    inset: 0;
     width: 100%;
-    height: auto;
-    max-height: 100%;
-    transform: translateY(-50%);
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;
   }
+}
+
+@media (min-width: 601px) and (orientation: portrait) {
+  .intro-splash-video { object-fit: contain; }
 }
 
 .intro-splash-grade {
@@ -306,10 +306,11 @@ body.intro-is-playing {
 .product-price { display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px; }
 .product-price strong { font-size: 24px; font-weight: 800; color: var(--brown); }
 .product-mrp { color: #8e8780; font-size: 17px; font-weight: 500; text-decoration: line-through; }
-.product-enquiry-button { display: flex; width: 100%; min-height: 52px; align-items: center; justify-content: center; gap: 10px; margin-top: 16px; padding: 0 18px; border: 2px solid var(--brown); background: transparent; color: var(--brown); font-family: var(--sans); font-size: 16px; font-weight: 700; letter-spacing: .02em; cursor: pointer; transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease; }
+.product-enquiry-button { display: flex; width: 100%; min-height: 52px; align-items: center; justify-content: center; gap: 8px; margin-top: 16px; padding: 0 12px; border: 2px solid var(--brown); background: transparent; color: var(--brown); font-family: var(--sans); font-size: 16px; font-weight: 700; letter-spacing: .02em; cursor: pointer; transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease; }
 .product-enquiry-button:hover { background: var(--brown); color: var(--white); transform: translateY(-2px); box-shadow: 0 4px 14px rgba(62,36,32,.25); }
 .product-enquiry-button span { font-size: 16px; font-weight: 700; }
-.product-enquiry-button .btn-whatsapp-icon { width: 22px; height: 22px; fill: currentColor; }
+.product-enquiry-button .btn-whatsapp-icon { display: block; width: 22px; height: 22px; flex: 0 0 auto; fill: currentColor; }
+.product-enquiry-arrow { flex: 0 0 auto; }
 .product-card-actions { display: flex; gap: 8px; margin-top: 14px; }
 .product-card-actions select { width: 96px; height: 48px; padding: 0 10px; border: 1.5px solid var(--line); border-radius: 0; background: var(--white); color: var(--brown); font-size: 15px; font-weight: 600; }
 .add-button { min-height: 48px; flex: 1; padding-inline: 16px; border: 2px solid var(--brown); background: transparent; color: var(--brown); font-size: 15px; font-weight: 700; cursor: pointer; transition: background .2s ease, color .2s ease; }
@@ -595,16 +596,20 @@ body.intro-is-playing {
   .product-price strong { font-size: 17px !important; }
   .product-price s, .product-mrp { font-size: 13px !important; }
   .product-enquiry-button {
+    display: grid !important;
+    grid-template-columns: 14px minmax(0, 1fr) auto;
     margin-top: auto !important;
     min-height: 40px !important;
-    padding-inline: 8px !important;
-    font-size: 12px !important;
+    padding-inline: 6px !important;
+    font-size: 10px !important;
     font-weight: 700 !important;
-    gap: 6px !important;
-    white-space: nowrap !important;
+    gap: 4px !important;
+    letter-spacing: 0 !important;
+    white-space: normal !important;
   }
-  .product-enquiry-button span { font-size: 12px !important; }
-  .product-enquiry-button .btn-whatsapp-icon { width: 16px !important; height: 16px !important; flex-shrink: 0; }
+  .product-enquiry-button span { min-width: 0; font-size: 10px !important; line-height: 1.15; }
+  .product-enquiry-button .btn-whatsapp-icon { width: 14px !important; height: 14px !important; }
+  .product-enquiry-arrow { font-size: 10px !important; }
   .product-card-actions { display: none !important; }
   .product-details-link {
     display: inline-block !important;
@@ -849,4 +854,3 @@ html[lang="mr"] h1, html[lang="mr"] h2, html[lang="mr"] h3 { font-family: var(--
   .admin-product-form { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 15px; }
   html[lang="mr"] .admin-product-form { grid-template-columns: 1fr; }
 }
-

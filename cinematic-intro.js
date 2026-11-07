@@ -32,7 +32,9 @@
     document.body.classList.add("intro-is-playing");
 
     const config = window.PERFECT_MENS_CONFIG || {};
-    const isMobile = window.innerWidth <= 768;
+    const isMobile = window.matchMedia(
+      "(max-width: 600px), (max-height: 500px) and (pointer: coarse)"
+    ).matches;
 
     let videoPath = "";
     if (
@@ -64,8 +66,8 @@
     video.preload = "auto";
     video.autoplay = true;
 
-    video.src = videoPath + "?v=14";
-    video.poster = posterPath + "?v=14";
+    video.src = videoPath + "?v=15";
+    video.poster = posterPath + "?v=15";
 
     // Attempt autoplay
     const playPromise = video.play();
